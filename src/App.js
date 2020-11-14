@@ -8,6 +8,7 @@ import List from './components/list-component/list-component';
 import ListContainer from './components/list-component/list-container';
 
 
+
 function App() {
   const initialList = [{
     id: 1,
@@ -46,7 +47,7 @@ function App() {
     completed: true
   }];
 
-  const [list, setList] = useState(initialList);
+const [list, setList] = useState(initialList);
 
 const handleToggle = (id) => {
   const newList = [...list];
@@ -58,10 +59,15 @@ const handleToggle = (id) => {
 }
 
 const handleDelete = (id) => {
-  const newList = list.filter(item => item.id !== id)
-  console.log(newList)
-  setList(newList);
+//  const newList = list.filter(item => item.id !== id)
+  list.splice(id, 1)
+  setList([...list]);
+  console.log(list)
 }
+
+useEffect(() => {
+  setList(list)
+}, [list])
 
 const handleAddButton = (entry) => {
   const newId = Math.random();
