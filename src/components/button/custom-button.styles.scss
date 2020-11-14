@@ -1,0 +1,26 @@
+.button-container {
+    height: 45px;
+    width: 100%;
+    border: none;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .custom-button {
+        width: 45px;
+        height: 100%;
+        border-radius: 25px;
+        background-color: steelblue;
+        color: white;
+        font-size: xx-large;
+        border: 5px;
+        position: 'absolute';
+        
+    }
+
+
+    @media screen and (max-width: 800px) {
+        align-items: center;
+      }
+}
