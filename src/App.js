@@ -30,13 +30,12 @@ function App() {
   }
   ]);
 
-  // const handleComplete = (e) => {
-  //   console.log(e)
-  //   setCompleted(e)
-  // }
-
 const handleToggle = (id) => {
   console.log('toggle' + id)
+  const newList = [...list];
+  newList[id].completed = true
+  setList(newList)
+
 }
 
   return (

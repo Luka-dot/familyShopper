@@ -1,10 +1,9 @@
 import React from 'react';
 
 import List from './list-component';
-import './list-container.styles.css';
+import './list-container.styles.scss';
 
 const ListContainer = ({listData, handleToggle}) => {
-
 
     return (
         <div className="list-container">
@@ -13,7 +12,6 @@ const ListContainer = ({listData, handleToggle}) => {
                     id={id} 
                     handleToggle={handleToggle}
                     {...otherProps} 
-                
                 />))
             }
         </div>

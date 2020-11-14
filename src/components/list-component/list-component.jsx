@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './list.styles.css';
+import './list.styles.scss';
 
 const List = ({ id, text, completed, handleToggle}) => {
 
