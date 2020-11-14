@@ -2,10 +2,9 @@
     height: 45px;
     width: 100%;
     border: none;
-    
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     .custom-button {
         width: 45px;
@@ -15,7 +14,6 @@
         color: white;
         font-size: xx-large;
         border: 5px;
-        position: 'absolute';
         
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './App.scss';
 
@@ -8,9 +8,8 @@ import List from './components/list-component/list-component';
 import ListContainer from './components/list-component/list-container';
 
 
-
 function App() {
-  const [list, setList] = useState([{
+  const initialList = [{
     id: 1,
     title: "new task",
     text: "clean up garage",
@@ -27,8 +26,27 @@ function App() {
     title: "TASK 333",
     text: "more and more text everywhere.",
     completed: true
-  }
-  ]);
+  },
+  {
+    id: 4,
+    title: "new task",
+    text: "clean up garage",
+    completed: false
+  },
+  {
+    id: 5,
+    title: "ANOTHER task",
+    text: "more and more text everywhere.",
+    completed: true
+  },
+  {
+    id: 8,
+    title: "ANOTHER task",
+    text: "LAST one.",
+    completed: true
+  }];
+
+  const [list, setList] = useState(initialList);
 
 const handleToggle = (id) => {
   const newList = [...list];
@@ -40,14 +58,25 @@ const handleToggle = (id) => {
 }
 
 const handleDelete = (id) => {
-  console.log('delete')
+  const newList = list.filter(item => item.id !== id)
+  console.log(newList)
+  setList(newList);
+}
+
+const handleAddButton = (entry) => {
+  const newId = Math.random();
+  const newList = [...list];
+  newList.push({ id: newId, title: "", text: entry, completed: false});
+  setList(newList);
 }
 
   return (
     <div className="App">
+      <div>
       <Header />
       <ListContainer listData={list} handleToggle={handleToggle} handleDelete={handleDelete}/>
-      <CustomButton />
+      </div>
+      <CustomButton handleAddButton={handleAddButton}/>
     </div>
   );
 }
