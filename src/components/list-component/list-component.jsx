@@ -2,7 +2,7 @@ import React from 'react';
 
 import './list.styles.scss';
 
-const List = ({ id, text, completed, handleToggle}) => {
+const List = ({ id, text, completed, handleToggle, handleDelete}) => {
 
     return (
         <div className="list-body"
@@ -16,7 +16,7 @@ const List = ({ id, text, completed, handleToggle}) => {
       
                 {/* <p className='list-title'>{title}</p> */}
                 <p className="list-text">{text}</p>
-           
+                <p className="delete" onClick={() => handleDelete(id)}>x</p>
         </div>
     )
 };

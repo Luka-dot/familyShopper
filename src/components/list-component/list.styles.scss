@@ -7,15 +7,23 @@
     margin-top: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: end;
-}
-.list-title {
-    font-weight: bolder;
-}
-.list-text {
-    font-size: large;
-    color: grey;
-    display: flex;
-    justify-content: center;
-    margin-left: 3%;
+    
+    justify-content: space-between;
+
+    .list-title {
+        font-weight: bolder;
+    }
+    .list-text {
+        font-size: large;
+        color: grey;
+        display: flex;
+        justify-content: center;
+        margin-left: 3%;
+    }
+    .delete {
+        font-size: x-large;
+        color: darkred;       
+        margin-top: -10px;
+        margin-right: 3px;
+    }
 }

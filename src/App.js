@@ -31,21 +31,22 @@ function App() {
   ]);
 
 const handleToggle = (id) => {
-  console.log('toggle' + id)
   const newList = [...list];
   const index = newList.find(item => {
     return item.id === id
   })
   index.completed = !index.completed;
-  console.log(newList);
   setList(newList);
+}
 
+const handleDelete = (id) => {
+  console.log('delete')
 }
 
   return (
     <div className="App">
       <Header />
-      <ListContainer listData={list} handleToggle={handleToggle}/>
+      <ListContainer listData={list} handleToggle={handleToggle} handleDelete={handleDelete}/>
       <CustomButton />
     </div>
   );
