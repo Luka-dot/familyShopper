@@ -33,8 +33,12 @@ function App() {
 const handleToggle = (id) => {
   console.log('toggle' + id)
   const newList = [...list];
-  newList[id].completed = true
-  setList(newList)
+  const index = newList.find(item => {
+    return item.id === id
+  })
+  index.completed = !index.completed;
+  console.log(newList);
+  setList(newList);
 
 }
 
