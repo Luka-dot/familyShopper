@@ -1,0 +1,22 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: 2px solid grey;
+    border-radius: 3px;
+    margin-bottom: 3px;
+}
+
+.item-text {
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+.delete-button {
+    margin-left: auto;
+    font-weight: bold;
+    font-size: x-large;
+    color: brown;
+}
