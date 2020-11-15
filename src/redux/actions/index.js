@@ -22,4 +22,11 @@ export const deleteItem = (id) => {
         type: 'DELETE_ITEM',
         payload: id
     }
-}
+};
+
+export const addItem = (newItem) => {
+    return {
+        type: 'ADD_ITEM',
+        payload: newItem
+    }
+};

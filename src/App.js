@@ -2,6 +2,8 @@ import React, { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from './redux/actions/index';
 import MainList from './components/main-list/main-list.component';
+import CustomButton from './components/button/custom-button-component';
+
 import './App.css';
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
       <button onClick={() => dispatch(increment(3))}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
       <MainList />
+      <CustomButton />
     </div>
   );
 }

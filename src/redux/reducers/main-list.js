@@ -21,7 +21,13 @@ const mainListReducer = (state = initialState, action) => {
             console.log('new list ', newList)
             return [
                 ...newList
-            ]
+            ];
+        case "ADD_ITEM":
+            let newItem = { id: (Math.random()), text: action.payload}
+            return [
+                ...state,
+                newItem
+            ];
         default:
             return state
     }
