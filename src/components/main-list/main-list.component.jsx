@@ -1,18 +1,16 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 
 import ListItem from '../list-item/list-item.component';
 
-import './main-list.styles.css';
+import './main-list.styles.scss';
 
-const MainList = () => {
-    const mainListData = useSelector(state => {return state.mainList})
+const MainList = ({ mainList }) => {
 
-    console.log(mainListData)
     return (
         <div className="main-list">
             {
-                mainListData.map((props) => (
+                mainList.map((props) => (
                     <ListItem key={props.id} {...props} />
                 ))
             }
@@ -20,6 +18,10 @@ const MainList = () => {
     )
 };
 
-export default MainList;
+const mapStateToProps = state => ({
+    mainList: state.mainList
+});
+
+export default connect(mapStateToProps)(MainList);
 
 

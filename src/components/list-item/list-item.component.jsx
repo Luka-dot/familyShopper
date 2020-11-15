@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {deleteItem} from '../../redux/actions/index';
-import './list-item.styles.css';
+import './list-item.styles.scss';
 
 const ListItem = ({id, text}) => {
     const dispatch = useDispatch();
