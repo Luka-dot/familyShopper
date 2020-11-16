@@ -8,7 +8,7 @@ import mainListReducer from './main-list';
 const allReducers = combineReducers({
     counter: counterReducer,
     logged: loggedReducer,
-    mainList: mainListReducer
+    mainList: mainListReducer,
 });
 
 export default allReducers;

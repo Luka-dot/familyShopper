@@ -1,23 +1,25 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 import {deleteItem, toggleCompleted} from '../../redux/actions/index';
 import './list-item.styles.scss';
 
-const ListItem = ({id, text, completed}) => {
-    const dispatch = useDispatch();
-    console.log('inside item id ', completed)
+const ListItem = ({id, text, completed, toggleCompleted, deleteItem}) => {
 
     return (
-        <div className="item" onClick={() => dispatch(toggleCompleted(id))}>
+        <div className="item" onClick={toggleCompleted(id)}>
             { !completed ? <p className="item-text">{text}</p> 
                 :
                 <p className="item-text-completed">{text}</p>
-            }
-            
-            <div className="delete-button" onClick={() => dispatch(deleteItem(id))}>x</div>
+            }           
+            <div className="delete-button" onClick={deleteItem(id)}>x</div>
         </div>
     )
 };
 
-export default ListItem;
+const mapDispatchToProps = dispatch => ({
+    toggleCompleted: id => dispatch(toggleCompleted(id)),
+    deleteItem: id => dispatch(deleteItem(id))
+});
+
+export default connect(null, mapDispatchToProps)(ListItem);
