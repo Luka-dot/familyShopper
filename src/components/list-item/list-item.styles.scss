@@ -7,12 +7,18 @@
     border: 2px solid grey;
     border-radius: 3px;
     margin-bottom: 3px;
+
+    .item-text {
+        margin-left: 4px;
+        font-weight: 500;
+    }
+
+    .item-text-completed {
+        text-decoration: line-through;
+    }
 }
 
-.item-text {
-    margin-left: 4px;
-    font-weight: 500;
-}
+
 
 .delete-button {
     margin-left: auto;
