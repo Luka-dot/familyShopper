@@ -14,6 +14,17 @@ const CustomButton = () => {
     }
 
     const handleEnter = () => {
+        console.log('submitting')
+        if (entry.length > 0) {
+            dispatch(addItem(entry));
+        setEntry('')
+        } else {
+            alert('must not be empty')
+        }
+    }
+
+    const handleKeyEnter = (e) => {
+        e.preventDefault()
         if (entry.length > 0) {
             dispatch(addItem(entry));
         setEntry('')
@@ -26,10 +37,11 @@ const CustomButton = () => {
         <div className="button-container">
             <button 
                 className="custom-button"
+                type="submit"
                 onClick={() => handleEnter(entry)}
             >+</button>
-            <form>
-                <input placeholder="new item" onChange={(e) => hadleChange(e)}></input>
+            <form onSubmit={(e) => handleKeyEnter(e)}>
+                <input className="input-text" placeholder="new item" value={entry} onChange={(e) => hadleChange(e)}></input>
             </form>
         </div>
     )

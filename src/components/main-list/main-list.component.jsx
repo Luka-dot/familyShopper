@@ -21,7 +21,12 @@ const MainList = (props) => {
         <div className="main-list">
             {
                 props.mainList.map((props) => (
-                    <ListItem key={props.id} {...props} toggleCompleted={() => handleToggle(props.id)} deleteItem={() => handleDelete(props.id)}  />
+                    <ListItem 
+                        key={props.id} 
+                        {...props} 
+                        toggleCompleted={() => handleToggle(props.id)} 
+                        deleteItem={() => handleDelete(props.id)}  
+                    />
                 ))
             }
         </div>

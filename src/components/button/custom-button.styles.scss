@@ -7,6 +7,7 @@
     justify-content: flex-start;
 
     .custom-button {
+        margin-left: 3px;
         width: 45px;
         height: 100%;
         border-radius: 25px;
@@ -17,6 +18,13 @@
         
     }
 
+    .input-text {
+        border: none;
+        margin-left: 5px;
+        border-bottom: solid 2px black;
+        font-size: larger;
+        color: darkblue
+    }
 
     @media screen and (max-width: 800px) {
         align-items: center;
