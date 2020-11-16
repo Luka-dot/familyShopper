@@ -21,27 +21,34 @@ const mainListReducer = (state = initialState, action) => {
             return state;
         case "DELETE_ITEM":
             let newList = state.filter((item) => { return item.id !== action.payload});
-            console.log('new list ', newList)
+            console.log(newList)
             return [
-                ...newList
+                ...state.filter((item) => { return item.id !== action.payload})
             ];
         case "ADD_ITEM":
             let newItem = { id: (Math.random()), text: action.payload, completed: false}
+            console.log('add item')
             return [
                 ...state,
                 newItem
             ];
-        case "TOGGLE_COMPLETED":
-            let toggleList = [...state]
-            const itemToUpdate = toggleList.find( item => {
-                return item.id === action.payload
-            })
-            itemToUpdate.completed = !itemToUpdate.completed
+        case "TOGGLE_COMPLETED":   
+            const elementsIndex = state.findIndex(element => element.id === action.payload )
+            console.log('element index ', elementsIndex)
+            if (elementsIndex < 0) {
+                return [
+                    ...state
+                ]
+            } else {
+            let newArray = [...state];
+            newArray[elementsIndex] = {...newArray[elementsIndex], completed: !newArray[elementsIndex].completed}
+            console.log(newArray)
             return [
-                ...toggleList
+                ...newArray
             ]
+            }
         default:
-            return state
+            return [ ...state ]
     }
 };
 
