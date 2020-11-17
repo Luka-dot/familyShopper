@@ -1,0 +1,16 @@
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+
+    p {
+        margin-left: 2vh;
+        margin-right: 2vh;
+        padding-left: 2vh;
+        padding-right: 2vh;
+        border: solid 1px rgb(99, 96, 96);
+        border-radius: 6px;
+    }
+}
