@@ -24,7 +24,14 @@
         border-bottom: solid 2px black;
         font-size: larger;
         color: darkblue
+
+        
     }
+
+    .input-text, textarea {
+        background-color :rgb(105, 103, 116);
+        border-bottom: solid 3px black;
+      }
 
     @media screen and (max-width: 800px) {
         align-items: center;

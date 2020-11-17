@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  min-height: 80vh;
+  padding-bottom:90px;
+
+  .positionInBottom {
+    position: fixed;
+    left:0;
+    bottom:0;
+    right:0;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    background-color:rgb(105, 103, 116);
+  }
 }
 
 .App-header {
@@ -12,4 +25,5 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 

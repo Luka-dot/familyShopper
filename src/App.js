@@ -15,7 +15,9 @@ function App(props) {
       <button onClick={props.increment}>+</button>
       <button onClick={props.decrement}>-</button>
       <MainList />
-      <CustomButton />
+      <div className="positionInBottom" >
+        <CustomButton  />
+        </div>
     </div>
   );
 }

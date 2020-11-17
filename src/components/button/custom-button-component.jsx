@@ -41,7 +41,7 @@ const CustomButton = () => {
                 onClick={() => handleEnter(entry)}
             >+</button>
             <form onSubmit={(e) => handleKeyEnter(e)}>
-                <input className="input-text" placeholder="new item" value={entry} onChange={(e) => hadleChange(e)}></input>
+                <input className="input-text" placeholder="new item" value={entry} onChange={(e) => hadleChange(e)} />
             </form>
         </div>
     )
