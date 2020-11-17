@@ -1,11 +1,13 @@
 import React, { useState} from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { increment, decrement } from './redux/actions/index';
+
 import MainList from './components/main-list/main-list.component';
-import CustomButton from './components/button/custom-button-component';
 import Header from './components/header/header-component';
-import HomePage from './pages/home-page/home-page-component'
+import HomePage from './pages/home-page/home-page-component';
+import LogInPage from './pages/logIn-page/logIn-page-component';
 
 import './App.scss';
 
@@ -14,11 +16,11 @@ function App(props) {
   return (
     <div className="App">
       <Header />
-      <Route exact path='/home' component={HomePage} />
-      <MainList />
-      <div className="positionInBottom" >
-        <CustomButton  />
-      </div>
+      <Switch>
+        <Route exact path='/home' component={HomePage} />
+        <Route exact path='/mainList' component={MainList} />
+        <Route exact path='/logIn' component={LogInPage} />
+      </Switch>
     </div>
   );
 }

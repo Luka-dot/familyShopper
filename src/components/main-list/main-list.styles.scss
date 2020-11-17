@@ -1,4 +1,22 @@
-.main-list {
-    margin: 0px 10px 0px 10px;
-    
-}
+
+.list-main-wrapper {
+    text-align: center;
+    min-height: 80vh;
+    padding-bottom:90px;
+
+    .list-main-list {
+        margin: 0px 10px 0px 10px;
+        
+    }
+  
+    .positionInBottom {
+      position: fixed;
+      left:0;
+      bottom:0;
+      right:0;
+      padding-top: 5px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      background-color:rgb(105, 103, 116);
+    }
+  }

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 
 import ListItem from '../list-item/list-item.component';
+import CustomButton from '../button/custom-button-component';
 import {deleteItem, toggleCompleted} from '../../redux/actions/index';
 
 import './main-list.styles.scss';
@@ -17,19 +18,24 @@ const MainList = (props) => {
         props.deleteItem(id);
     };
 
-    return (      
-        <div className="main-list">
-            {
-                props.mainList.map((props) => (
-                    <ListItem 
-                        key={props.id} 
-                        {...props} 
-                        toggleCompleted={() => handleToggle(props.id)} 
-                        deleteItem={() => handleDelete(props.id)}  
-                    />
-                ))
-            }
+    return (  
+        <div className="list-main-wrapper">    
+            <div className="list-main-list">
+                {
+                    props.mainList.map((props) => (
+                        <ListItem 
+                            key={props.id} 
+                            {...props} 
+                            toggleCompleted={() => handleToggle(props.id)} 
+                            deleteItem={() => handleDelete(props.id)}  
+                        />
+                    ))
+                }
+            </div>
+            <div className="positionInBottom" >
+                <CustomButton  />
         </div>
+      </div>
     )
 };
 
