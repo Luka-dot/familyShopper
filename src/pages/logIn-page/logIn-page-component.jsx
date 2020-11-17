@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import './logIn-page.styles.scss';
 
-const LogInPage = () => {
+const LogInPage = (props) => {
 
     return (
         <div className="logIn-main-wrapper">
-            <h3>Log in with your email and password</h3>
+            {
+                props.isLogged ? <h3>Welcome back</h3> : <h3>Log in with your email and password</h3>
+            }
+            
             <form className="form-container" onSubmit={() => {}}>
                 <input placeholder="email" />
                 <input placeholder="password" />
@@ -15,4 +19,8 @@ const LogInPage = () => {
     )
 };
 
-export default LogInPage;
+const mapStateToProps = state => ({
+    isLogged: state.logged
+})
+
+export default connect(mapStateToProps)(LogInPage);

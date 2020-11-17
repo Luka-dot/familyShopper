@@ -37,3 +37,9 @@ export const toggleCompleted = (id) => {
         payload: id
     }
 };
+
+export const signIn = () => {
+    return {
+        type: 'SIGN_IN',
+    }
+};
