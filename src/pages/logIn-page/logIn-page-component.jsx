@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux'
 
 import './logIn-page.styles.scss';
 
 const LogInPage = (props) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const hadleEmailChange = (e) => {
+        const textInput = e.target.value;
+        setEmail(textInput)
+    }
+
+    const handlePasswordChange = (e) => {
+        const textInput = e.target.value;
+        setPassword(textInput)
+    }
+
+    const handlePressLogin = (email, password) => {
+        console.log(email, password)
+    };
 
     return (
         <div className="logIn-main-wrapper">
@@ -12,9 +29,14 @@ const LogInPage = (props) => {
             }
             
             <form className="form-container" onSubmit={() => {}}>
-                <input placeholder="email" />
-                <input placeholder="password" />
+                <input placeholder="email" value={email} onChange={(e) => hadleEmailChange(e)}/>
+                <input type="password" placeholder="password" value={password} onChange={(e) => handlePasswordChange(e)} />
             </form>
+            <button 
+                className="custom-button"
+                type="submit"
+                onClick={() => handlePressLogin(email, password)}
+            >Log in</button>
         </div>
     )
 };

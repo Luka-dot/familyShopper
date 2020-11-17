@@ -35,14 +35,14 @@ const CustomButton = () => {
 
     return (
         <div className="button-container">
+            <form onSubmit={(e) => handleKeyEnter(e)}>
+                <input className="input-text" placeholder="new item" value={entry} onChange={(e) => hadleChange(e)} />
+            </form>
             <button 
                 className="custom-button"
                 type="submit"
                 onClick={() => handleEnter(entry)}
             >+</button>
-            <form onSubmit={(e) => handleKeyEnter(e)}>
-                <input className="input-text" placeholder="new item" value={entry} onChange={(e) => hadleChange(e)} />
-            </form>
         </div>
     )
 };
