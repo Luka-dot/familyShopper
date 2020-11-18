@@ -2,6 +2,8 @@ import React, { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux'
 
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
 import './logIn-page.styles.scss';
 
 const LogInPage = (props) => {
@@ -29,7 +31,7 @@ const LogInPage = (props) => {
             }
             
             <form className="form-container" onSubmit={() => {}}>
-                <input placeholder="email" value={email} onChange={(e) => hadleEmailChange(e)}/>
+                <input type="email" placeholder="email" value={email} onChange={(e) => hadleEmailChange(e)}/>
                 <input type="password" placeholder="password" value={password} onChange={(e) => handlePasswordChange(e)} />
             </form>
             <button 
@@ -37,6 +39,11 @@ const LogInPage = (props) => {
                 type="submit"
                 onClick={() => handlePressLogin(email, password)}
             >Log in</button>
+            <button 
+                className="custom-button"
+                type="submit"
+                onClick={signInWithGoogle}
+            >Sign In with Google</button>
         </div>
     )
 };
