@@ -1,19 +1,6 @@
-const initialState = [{
-    id: 1,
-    text: "this is a first list item",
-    completed: false
-},
-{
-    id: 2,
-    text: "this is yet another list",
-    completed: false
-},
-{
-    id: 3,
-    text: "more and more and more this is last one",
-    completed: false
-}
-]
+import inialData from '../../data/base-date';
+
+const initialState = inialData;
 
 const mainListReducer = (state = initialState, action) => {
     switch(action.type) {

@@ -1,15 +1,3 @@
-export const increment = (num) => {
-    return {
-        type: 'INCREMENT',
-        payload: num,
-    }
-};
-
-export const decrement = () => {
-    return {
-        type: 'DECREMENT'
-    }
-};
 
 export const getMainList = () => {
     return {
@@ -38,8 +26,8 @@ export const toggleCompleted = (id) => {
     }
 };
 
-export const signIn = () => {
+export const logIn = () => {
     return {
-        type: 'SIGN_IN',
+        type: 'LOG_IN',
     }
 };

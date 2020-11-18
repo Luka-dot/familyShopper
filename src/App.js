@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Header currentUser={currentUser} />
       <Switch>
-        <Route exact path='/home' component={HomePage} />
+        <Route exact path='/' component={HomePage} />
         <Route exact path='/mainList' component={MainList} />
         <Route exact path='/logIn' component={LogInPage} />
       </Switch>

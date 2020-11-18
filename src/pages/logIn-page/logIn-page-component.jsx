@@ -1,5 +1,4 @@
 import React, { useState} from 'react';
-import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux'
 
 import { signInWithGoogle } from '../../firebase/firebase.utils';
@@ -52,4 +51,8 @@ const mapStateToProps = state => ({
     isLogged: state.logged
 })
 
-export default connect(mapStateToProps)(LogInPage);
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogInPage);
