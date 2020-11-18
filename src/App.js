@@ -18,13 +18,12 @@ function App() {
       setCurrentUser(user);
 
       console.log(user);
-      console.log(currentUser)
     })
   });
 
   return (
     <div className="App">
-      <Header />
+      <Header currentUser={currentUser} />
       <Switch>
         <Route exact path='/home' component={HomePage} />
         <Route exact path='/mainList' component={MainList} />

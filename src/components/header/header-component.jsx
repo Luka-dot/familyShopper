@@ -1,15 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { auth } from '../../firebase/firebase.utils';
 
 import './header.styles.scss';
 
-const Header = () => {
+const Header = ({ currentUser }) => {
 
     return (
-        <div className="header-main-container">
-            <p>All list's</p>
-            <p>placeholder name</p>
-            <p>log in</p>
+        <div>
+        { currentUser ? (
+            <div className="header-main-container">
+                <Link to='/mainList'><p>All list's</p></Link>
+                <p>{currentUser.displayName}</p>
+                <p>log in</p>
+            </div>
+             ) : 
+             <div className="header-main-container">
+                <p>All list's</p>
+                <p>please log-In</p>
+                <p>log in</p>
+            </div>
+        } 
         </div>
+        
     )
 };
 
