@@ -22,7 +22,7 @@ const MainList = (props) => {
         <div className="list-main-wrapper">    
             <div className="list-main-list">
                 {
-                    props.mainList.map((props) => (
+                    props.mainList[1].listDetail.map((props) => (
                         <ListItem 
                             key={props.id} 
                             {...props} 

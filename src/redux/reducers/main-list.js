@@ -6,12 +6,14 @@ const mainListReducer = (state = initialState, action) => {
     switch(action.type) {
         case "GET_LIST":
             return state;
+
         case "DELETE_ITEM":
             let newList = state.filter((item) => { return item.id !== action.payload});
             console.log(newList)
             return [
                 ...state.filter((item) => { return item.id !== action.payload})
             ];
+
         case "ADD_ITEM":
             let newItem = { id: (Math.random()), text: action.payload, completed: false}
             console.log('add item')
@@ -19,6 +21,7 @@ const mainListReducer = (state = initialState, action) => {
                 ...state,
                 newItem
             ];
+
         case "TOGGLE_COMPLETED":   
             const elementsIndex = state.findIndex(element => element.id === action.payload )
             console.log('element index ', elementsIndex)
@@ -35,7 +38,13 @@ const mainListReducer = (state = initialState, action) => {
             ]
             }
         default:
-            return [ ...state ]
+            return [ ...state ];
+
+        case "SINGLE_LIST":
+            console.log('single list fired')
+            return [
+                ...state
+            ];
     }
 };
 
