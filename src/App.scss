@@ -3,6 +3,10 @@
   min-height: 80vh;
   padding-bottom:90px;
 
+  .header-main-container {
+    position: fixed;
+  }
+
   .positionInBottom {
     position: fixed;
     left:0;
