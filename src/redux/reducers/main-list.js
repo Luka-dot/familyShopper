@@ -20,11 +20,12 @@ const mainListReducer = (state = initialState, action) => {
             ];
 
         case "ADD_ITEM":
-            let newItem = { id: (Math.random()), text: action.payload, completed: false}
-            console.log('add item')
+            let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
+            const addItem = [...state];
+            addItem[action.payload.parentId].listDetail.push(newItem);
+       
             return [
-                ...state,
-                newItem
+                ...addItem
             ];
 
         case "TOGGLE_COMPLETED":   

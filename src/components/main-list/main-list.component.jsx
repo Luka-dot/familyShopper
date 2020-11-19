@@ -37,7 +37,7 @@ const MainList = (props) => {
                 }
             </div>
             <div className="positionInBottom" >
-                <CustomButton  />
+                <CustomButton elementsIndex={elementsIndex} />
         </div>
       </div>
     )

@@ -12,10 +12,11 @@ export const deleteItem = (id, elIndex) => {
     }
 };
 
-export const addItem = (newItem) => {
+export const addItem = (newItem, parentId) => {
+    console.log('add ', newItem, parentId)
     return {
         type: 'ADD_ITEM',
-        payload: newItem
+        payload: {newItem, parentId}
     }
 };
 

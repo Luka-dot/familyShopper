@@ -4,10 +4,11 @@ import {addItem} from '../../redux/actions/index';
 
 import './custom-button.styles.scss';
 
-const CustomButton = () => {
+const CustomButton = (props) => {
     const dispatch = useDispatch();
     const [entry, setEntry] = useState('');
-
+    const parentId = props.elementsIndex
+    
     const hadleChange = (e) => {
         const textInput = e.target.value;
         setEntry(textInput)
@@ -16,7 +17,7 @@ const CustomButton = () => {
     const handleEnter = () => {
         console.log('submitting')
         if (entry.length > 0) {
-            dispatch(addItem(entry));
+            dispatch(addItem(entry, parentId));
         setEntry('')
         } else {
             alert('must not be empty')
@@ -26,7 +27,7 @@ const CustomButton = () => {
     const handleKeyEnter = (e) => {
         e.preventDefault()
         if (entry.length > 0) {
-            dispatch(addItem(entry));
+            dispatch(addItem(entry, parentId));
         setEntry('')
         } else {
             alert('must not be empty')
