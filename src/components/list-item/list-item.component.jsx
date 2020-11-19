@@ -6,7 +6,7 @@ const ListItem = (props) => {
     console.log(props.elementsIndex)
     return (
         <div className="item" >
-            <div onClick={() => props.toggleCompleted(props.id, props.elementsIndex)}>
+            <div className='text-item-container' onClick={() => props.toggleCompleted(props.id, props.elementsIndex)}>
             { !props.completed ? <p className="item-text">{props.text}</p> 
                 :
                 <p className="item-text-completed">{props.text}</p>
