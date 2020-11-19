@@ -18,7 +18,7 @@
             <div className="directory-wrapper">
                 {
                     props.mainList.map((props) => (
-                        <div className="directory-card" onClick={() => handleSelectList(props.id)}>
+                        <div key={props.id} className="directory-card" onClick={() => handleSelectList(props.id)} parentindex={handleSelectList(props.id)}>
                             <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} >
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>

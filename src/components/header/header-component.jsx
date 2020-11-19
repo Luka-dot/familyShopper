@@ -11,7 +11,7 @@ const Header = ({ currentUser }) => {
         <div>
         { currentUser ? (
             <div className="header-main-container">
-                <Link to='/mainList'><p>All list's</p></Link>
+                <Link to='/'><p>All list's</p></Link>
                 <p>{currentUser.displayName}</p>
                 <p>log in</p>
             </div>

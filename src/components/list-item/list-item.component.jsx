@@ -2,17 +2,17 @@ import React from 'react';
 
 import './list-item.styles.scss';
 
-const ListItem = ({id, text, completed, toggleCompleted, deleteItem}) => {
-    console.log(toggleCompleted)
+const ListItem = (props) => {
+    console.log(props.elementsIndex)
     return (
-        <div className="item" onClick={toggleCompleted}>
+        <div className="item" onClick={() => props.toggleCompleted(props.id, props.elementsIndex)}>
             <div>
-            { !completed ? <p className="item-text">{text}</p> 
+            { !props.completed ? <p className="item-text">{props.text}</p> 
                 :
-                <p className="item-text-completed">{text}</p>
+                <p className="item-text-completed">{props.text}</p>
             }
             </div>           
-            <div className="delete-button" onClick={deleteItem}>x</div>
+            <div className="delete-button" onClick={props.deleteItem}>x</div>
         </div>
     )
 };

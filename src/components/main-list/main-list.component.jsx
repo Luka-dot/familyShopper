@@ -8,32 +8,20 @@ import {deleteItem, toggleCompleted} from '../../redux/actions/index';
 import './main-list.styles.scss';
 
 const MainList = (props) => {
-    console.log(props.mainList)
-    
+    console.log(props)
+
     const displayListId = props.location.selectedItemId;
-    console.log(displayListId)
     const elementsIndex = props.mainList.findIndex(element => element.id === displayListId )
-    console.log(elementsIndex)
 
-    // const findListToDisplay = (id) => {
-    //     elementsIndex = props.mainList.findIndex(element => element.id === id )
-    //     console.log(elementsIndex);
-        
-    //     return elementsIndex
-    // }
-
-    const handleToggle = (id) => {
-        props.toggleCompleted(id);
+    const handleToggle = (id, elIndex) => {
+        console.log('mainList ', elementsIndex)
+        console.log(id)
+        props.toggleCompleted(id, elIndex);
     };
 
     const handleDelete = (id) => {
         props.deleteItem(id);
     };
-
-    // useEffect(() => {
-    //     findListToDisplay(displayListId)
-    // })
-    
 
     return (  
         <div className="list-main-wrapper">    
@@ -42,8 +30,9 @@ const MainList = (props) => {
                     props.mainList[elementsIndex].listDetail.map((props) => (
                         <ListItem 
                             key={props.id} 
-                            {...props} 
-                            toggleCompleted={() => handleToggle(props.id)} 
+                            {...props}
+                            elementsIndex={elementsIndex} 
+                            toggleCompleted={handleToggle} 
                             deleteItem={() => handleDelete(props.id)}  
                         />
                     ))
@@ -61,7 +50,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    toggleCompleted: id => dispatch(toggleCompleted(id)),
+    toggleCompleted: (id, elIndex) => dispatch(toggleCompleted(id, elIndex)),
     deleteItem: id => dispatch(deleteItem(id))
 });
 

@@ -19,10 +19,11 @@ export const addItem = (newItem) => {
     }
 };
 
-export const toggleCompleted = (id) => {
+export const toggleCompleted = (id, elIndex) => {
+    console.log(id, elIndex)
     return {
         type: 'TOGGLE_COMPLETED',
-        payload: id
+        payload: {id, elIndex}
     }
 };
 

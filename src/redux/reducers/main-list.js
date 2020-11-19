@@ -23,16 +23,19 @@ const mainListReducer = (state = initialState, action) => {
             ];
 
         case "TOGGLE_COMPLETED":   
-            const elementsIndex = state.findIndex(element => element.id === action.payload )
-            console.log('element index ', elementsIndex)
+            const parentIndex = action.payload.elIndex;
+            const elementsIndex = state[parentIndex].listDetail.findIndex(element => element.id === action.payload.id )
+
             if (elementsIndex < 0) {
                 return [
                     ...state
                 ]
             } else {
             let newArray = [...state];
-            newArray[elementsIndex] = {...newArray[elementsIndex], completed: !newArray[elementsIndex].completed}
-            console.log(newArray)
+            newArray[parentIndex].listDetail[elementsIndex] = {
+                ...newArray[parentIndex].listDetail[elementsIndex], 
+                completed: !newArray[parentIndex].listDetail[elementsIndex].completed
+            }
             return [
                 ...newArray
             ]
