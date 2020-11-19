@@ -25,17 +25,17 @@ const initialData = [
     created: "11/10/2020",
     listDetail: [{
             id: 21,
-            text: "this is a first list item",
+            text: "2nd list this is a first list item",
             completed: false
         },
         {
             id: 22,
-            text: "this is yet another list",
+            text: "2nd list this is yet another list",
             completed: false
         },
         {
             id: 23,
-            text: "more and more and more this is last one",
+            text: "2nd list more and more and more this is last one",
             completed: false
         }]
     }

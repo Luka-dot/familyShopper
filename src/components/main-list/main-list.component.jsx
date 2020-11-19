@@ -8,7 +8,19 @@ import {deleteItem, toggleCompleted} from '../../redux/actions/index';
 import './main-list.styles.scss';
 
 const MainList = (props) => {
-    console.log(props.toggleCompleted)
+    console.log(props.mainList)
+    
+    const displayListId = props.location.selectedItemId;
+    console.log(displayListId)
+    const elementsIndex = props.mainList.findIndex(element => element.id === displayListId )
+    console.log(elementsIndex)
+
+    // const findListToDisplay = (id) => {
+    //     elementsIndex = props.mainList.findIndex(element => element.id === id )
+    //     console.log(elementsIndex);
+        
+    //     return elementsIndex
+    // }
 
     const handleToggle = (id) => {
         props.toggleCompleted(id);
@@ -18,11 +30,16 @@ const MainList = (props) => {
         props.deleteItem(id);
     };
 
+    // useEffect(() => {
+    //     findListToDisplay(displayListId)
+    // })
+    
+
     return (  
         <div className="list-main-wrapper">    
             <div className="list-main-list">
                 {
-                    props.mainList[1].listDetail.map((props) => (
+                    props.mainList[elementsIndex].listDetail.map((props) => (
                         <ListItem 
                             key={props.id} 
                             {...props} 

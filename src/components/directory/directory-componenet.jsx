@@ -1,5 +1,6 @@
     import React from 'react';
     import { connect } from 'react-redux';
+    import { Link } from 'react-router-dom';
  
     import './directory-component.styles.scss';
 
@@ -18,9 +19,11 @@
                 {
                     props.mainList.map((props) => (
                         <div className="directory-card" onClick={() => handleSelectList(props.id)}>
+                            <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} >
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>
                             <p>{props.listDetail.length} items on this list.</p>
+                            </Link>
                         </div>
                     ))
                 }
