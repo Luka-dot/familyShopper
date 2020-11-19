@@ -5,10 +5,10 @@ export const getMainList = () => {
     }
 };
 
-export const deleteItem = (id) => {
+export const deleteItem = (id, elIndex) => {
     return {
         type: 'DELETE_ITEM',
-        payload: id
+        payload: {id, elIndex}
     }
 };
 

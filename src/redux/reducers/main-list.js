@@ -8,10 +8,15 @@ const mainListReducer = (state = initialState, action) => {
             return state;
 
         case "DELETE_ITEM":
-            let newList = state.filter((item) => { return item.id !== action.payload});
-            console.log(newList)
+            const pIndex = action.payload.elIndex;
+            const xList = state[pIndex].listDetail.filter((item) => { return item.id !== action.payload.id});
+      //      console.log(state[pIndex].listDetail)
+        //    console.log('xlist ', xList)
+            let deleteList = [ ...state ];
+            const ttt = (deleteList[pIndex].listDetail = xList)
+                
             return [
-                ...state.filter((item) => { return item.id !== action.payload})
+                ...state  
             ];
 
         case "ADD_ITEM":

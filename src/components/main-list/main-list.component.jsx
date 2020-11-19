@@ -14,13 +14,11 @@ const MainList = (props) => {
     const elementsIndex = props.mainList.findIndex(element => element.id === displayListId )
 
     const handleToggle = (id, elIndex) => {
-        console.log('mainList ', elementsIndex)
-        console.log(id)
         props.toggleCompleted(id, elIndex);
     };
 
-    const handleDelete = (id) => {
-        props.deleteItem(id);
+    const handleDelete = (id, elIndex) => {
+        props.deleteItem(id, elIndex);
     };
 
     return (  
@@ -33,7 +31,7 @@ const MainList = (props) => {
                             {...props}
                             elementsIndex={elementsIndex} 
                             toggleCompleted={handleToggle} 
-                            deleteItem={() => handleDelete(props.id)}  
+                            deleteItem={handleDelete}  
                         />
                     ))
                 }
@@ -51,7 +49,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     toggleCompleted: (id, elIndex) => dispatch(toggleCompleted(id, elIndex)),
-    deleteItem: id => dispatch(deleteItem(id))
+    deleteItem: (id, elIndex) => dispatch(deleteItem(id, elIndex))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainList);
