@@ -9,33 +9,30 @@
 
     const DirectoryList = (props) => {
 
-        const handleDeleteDirList = (directoryListId) => {
-            // const elementsIndex = props.mainList.findIndex(element => element.id === id )
-            // const selectedList = props.mainList[elementsIndex].listDetail;
-            console.log('del dir list ', directoryListId)
-            props.deleteDirectory(directoryListId);
-        }
+    const handleDeleteDirList = (directoryListId) => {
+        console.log('del dir list ', directoryListId)
+        props.deleteDirectory(directoryListId);
+    }
 
-        return (
-            <div className="directory-wrapper">
-                {
-                    props.mainList.map((props) => (
-                        <div key={props.id} className="directory-card"  >
-                            <div className="delete-container">
-                                <img className="delete-icon" src={deleteIcon} onClick={() => handleDeleteDirList(props.id)} />
-                            </div>
-                            <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} style={{ color: 'inherit', textDecoration: 'inherit'}} >
+    return (
+        <div className="directory-wrapper">
+            {
+                props.mainList.map((props) => (
+                    <div key={props.id} className="directory-card"  >
+                        <div className="delete-container">
+                            <img className="delete-icon" src={deleteIcon} onClick={() => handleDeleteDirList(props.id)} />
+                        </div>
+                        <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} style={{ color: 'inherit', textDecoration: 'inherit'}} >
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>
                             <p>{props.listDetail.length} items on this list.</p>
-                            </Link>
-                        </div>
-                    ))
-                }
-
-            </div>
-        )
-    };
+                        </Link>
+                    </div>
+                ))
+            }
+        </div>
+    )
+};
 
 const mapStateToProps = (state) => ({
     mainList: state.mainList

@@ -62,7 +62,6 @@ const mainListReducer = (state = initialState, action) => {
             ]
 
         case "DELTE_DIRECTORY_LIST":
-            console.log('DELTE_DIRECTORY_LIST in redux ', action.payload)
             const listAfterDeleteDirectory = state.filter((item) => {return item.id !== action.payload})
             return [
                 ...listAfterDeleteDirectory

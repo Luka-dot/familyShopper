@@ -8,8 +8,6 @@ import {deleteItem, toggleCompleted} from '../../redux/actions/index';
 import './main-list.styles.scss';
 
 const MainList = (props) => {
-    console.log(props)
-
     const displayListId = props.location.selectedItemId;
     const elementsIndex = props.mainList.findIndex(element => element.id === displayListId )
 
@@ -53,5 +51,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainList);
-
-
