@@ -2,23 +2,28 @@
     import { connect } from 'react-redux';
     import { Link } from 'react-router-dom';
  
+    import {deleteDirectoryList} from '../../redux/actions/index';
+
     import './directory-component.styles.scss';
+    import deleteIcon from '../../assets/delete.svg';
 
     const DirectoryList = (props) => {
-        console.log(props.mainList);
 
-        const handleSelectList = (id) => {
-            const elementsIndex = props.mainList.findIndex(element => element.id === id )
-            console.log(elementsIndex);
-            const selectedList = props.mainList[elementsIndex].listDetail;
-            console.log(selectedList)
+        const handleDeleteDirList = (directoryListId) => {
+            // const elementsIndex = props.mainList.findIndex(element => element.id === id )
+            // const selectedList = props.mainList[elementsIndex].listDetail;
+            console.log('del dir list ', directoryListId)
+            props.deleteDirectory(directoryListId);
         }
 
         return (
             <div className="directory-wrapper">
                 {
                     props.mainList.map((props) => (
-                        <div key={props.id} className="directory-card" onClick={() => handleSelectList(props.id)} parentindex={handleSelectList(props.id)}>
+                        <div key={props.id} className="directory-card"  >
+                            <div className="delete-container">
+                                <img className="delete-icon" src={deleteIcon} onClick={() => handleDeleteDirList(props.id)} />
+                            </div>
                             <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} style={{ color: 'inherit', textDecoration: 'inherit'}} >
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>
@@ -37,7 +42,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    deleteDirectory: directoryListId => dispatch(deleteDirectoryList(directoryListId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DirectoryList);

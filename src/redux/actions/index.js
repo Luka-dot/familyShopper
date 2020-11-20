@@ -46,3 +46,10 @@ export const addNewDirectoryList = (name) => {
         payload: name
     }
 };
+
+export const deleteDirectoryList = (directoryListId) => {
+    return{
+        type: 'DELTE_DIRECTORY_LIST',
+        payload: directoryListId
+    }
+};

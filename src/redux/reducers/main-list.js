@@ -54,15 +54,19 @@ const mainListReducer = (state = initialState, action) => {
 
         case "ADD_NEW_DIRECTORY_LIST":
             const textToAdd = action.payload;
-            console.log(textToAdd)
             const dateToAdd = new Date().toLocaleDateString();
             const newDirectoryToAdd = { id: Math.random(), name: textToAdd, created: dateToAdd, listDetail: [] };
-            console.log('ADD ', newDirectoryToAdd)
             return [
                 ...state,
                 newDirectoryToAdd
             ]
 
+        case "DELTE_DIRECTORY_LIST":
+            console.log('DELTE_DIRECTORY_LIST in redux ', action.payload)
+            const listAfterDeleteDirectory = state.filter((item) => {return item.id !== action.payload})
+            return [
+                ...listAfterDeleteDirectory
+            ]
     }
 };
 
