@@ -55,8 +55,8 @@ const mainListReducer = (state = initialState, action) => {
         case "ADD_NEW_DIRECTORY_LIST":
             const textToAdd = action.payload;
             console.log(textToAdd)
-            const dateToAdd = new Date();
-            const newDirectoryToAdd = { id: Math.random(), name: textToAdd, created: "placeholder", listDetail: [] };
+            const dateToAdd = new Date().toLocaleDateString();
+            const newDirectoryToAdd = { id: Math.random(), name: textToAdd, created: dateToAdd, listDetail: [] };
             console.log('ADD ', newDirectoryToAdd)
             return [
                 ...state,
