@@ -6,12 +6,15 @@ import { auth } from '../../firebase/firebase.utils';
 import './header.styles.scss';
 
 const Header = ({ currentUser }) => {
+    
 
     return (
         <div>
         { currentUser ? (
             <div className="header-main-container">
-                <Link to='/'><p>All list's</p></Link>
+                <Link to='/'
+                    style={{ color: 'inherit', textDecoration: 'inherit'}}
+                ><p>All list's</p></Link>
                 <p>{currentUser.displayName}</p>
                 <p>log in</p>
             </div>

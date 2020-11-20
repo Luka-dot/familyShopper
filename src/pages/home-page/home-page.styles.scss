@@ -19,4 +19,37 @@
         color: silver;
         border-radius: 5px;
     }
+
+    .directory-form {
+        margin-bottom: 5px;
+    }
+
+    .enterNewDir {
+        background-color: black;
+        color: silver;
+        width: 18vh;
+        height: 3vh;
+        border-radius: 5px;
+    }
+
+    
+
+    .new-directory-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 60%;
+        
+
+        .cancel-new-directory-list {
+            margin: 10px;
+            margin-bottom: 40px;
+            border: none;
+            background-color: white;
+            font-weight: bolder;
+            font-size: medium;
+            color: rgb(133, 127, 127);
+            width: 20px;
+        }
+    }
 }

@@ -5,6 +5,7 @@ import DirectiryList from '../../components/directory/directory-componenet';
 import { addNewDirectoryList } from '../../redux/actions';
 
 import './home-page.styles.scss';
+import closeIcon from '../../assets/delete-button.svg';
 
 const HomePage = (props) => {
     const [addListStarted, setAddListStarted] = useState(false);
@@ -37,10 +38,14 @@ const HomePage = (props) => {
             </div>
             ):(
             <div className='home-wrapper' >
-                <form>
-                    <input type="text" placeholder="Name of the new List" onChange={(e) => handleNameChange(e) } />
-                </form>
-                <button className="enterNewDir" type="submit" onClick={handleAddDirectory}>ADD new list</button>
+                <div className="new-directory-wrapper">
+                    <img src={closeIcon} className="cancel-new-directory-list" onClick={() => setAddListStarted(false)}></img>
+                </div>
+                    <form className="directory-form">
+                        <input type="text" placeholder="Name of the new List" onChange={(e) => handleNameChange(e) } />
+                    </form>
+                    <button className="enterNewDir" type="submit" onClick={handleAddDirectory}>ADD new list</button>
+                
             </div>
             )
             }

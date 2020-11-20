@@ -1,5 +1,6 @@
 import React from 'react';
 
+import deleteIcon from '../../assets/delete.svg';
 import './list-item.styles.scss';
 
 const ListItem = (props) => {
@@ -12,7 +13,7 @@ const ListItem = (props) => {
                 <p className="item-text-completed">{props.text}</p>
             }
             </div>           
-            <div className="delete-button" onClick={() => props.deleteItem(props.id, props.elementsIndex)}>x</div>
+            <img className="delete-button" src={deleteIcon} onClick={() => props.deleteItem(props.id, props.elementsIndex)}></img>
         </div>
     )
 };

@@ -19,7 +19,7 @@
                 {
                     props.mainList.map((props) => (
                         <div key={props.id} className="directory-card" onClick={() => handleSelectList(props.id)} parentindex={handleSelectList(props.id)}>
-                            <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} >
+                            <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} style={{ color: 'inherit', textDecoration: 'inherit'}} >
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>
                             <p>{props.listDetail.length} items on this list.</p>
