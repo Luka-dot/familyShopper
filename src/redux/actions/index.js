@@ -21,7 +21,6 @@ export const addItem = (newItem, parentId) => {
 };
 
 export const toggleCompleted = (id, elIndex) => {
-    console.log(id, elIndex)
     return {
         type: 'TOGGLE_COMPLETED',
         payload: {id, elIndex}
@@ -38,5 +37,12 @@ export const singleListSelection = (id) => {
     return{
         type: 'SINGLE_LIST',
         payload: id
+    }
+};
+
+export const addNewDirectoryList = (name) => {
+    return{
+        type: 'ADD_NEW_DIRECTORY_LIST',
+        payload: name
     }
 };

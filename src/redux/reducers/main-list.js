@@ -10,8 +10,6 @@ const mainListReducer = (state = initialState, action) => {
         case "DELETE_ITEM":
             const pIndex = action.payload.elIndex;
             const xList = state[pIndex].listDetail.filter((item) => { return item.id !== action.payload.id});
-      //      console.log(state[pIndex].listDetail)
-        //    console.log('xlist ', xList)
             let deleteList = [ ...state ];
             const ttt = (deleteList[pIndex].listDetail = xList)
                 
@@ -50,10 +48,21 @@ const mainListReducer = (state = initialState, action) => {
             return [ ...state ];
 
         case "SINGLE_LIST":
-            console.log('single list fired')
             return [
                 ...state
             ];
+
+        case "ADD_NEW_DIRECTORY_LIST":
+            const textToAdd = action.payload;
+            console.log(textToAdd)
+            const dateToAdd = new Date();
+            const newDirectoryToAdd = { id: Math.random(), name: textToAdd, created: "placeholder", listDetail: [] };
+            console.log('ADD ', newDirectoryToAdd)
+            return [
+                ...state,
+                newDirectoryToAdd
+            ]
+
     }
 };
 
