@@ -5,7 +5,7 @@ const directoryRoutes = require('./routes/directory-list-routes');
 
 const app = express();
 
-app.use(directoryRoutes);
+app.use('/api/directory/', directoryRoutes);
 
 
 app.listen(5000);
