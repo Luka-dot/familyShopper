@@ -49,7 +49,12 @@ router.get('/:id', (req, res, next) => {
     const directoryId = parseInt(req.params.id, 10);
     const directory = DUMMY_DIRECTORY.find(p => {
         return p.id === directoryId;
-    })
+    });
+
+    if (!directory) {
+        return res.status(404).json({message: 'Did not find directory by this ID.'})
+    } 
+
     res.json({ directory })
 });
 
