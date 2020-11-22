@@ -1,6 +1,8 @@
 const express = require('express');
 
-const router = express.Router();
+const HttpError = require
+
+const router = express.Router('../models/http-error');
 
 const DUMMY_DIRECTORY = [
     {
@@ -52,9 +54,7 @@ router.get('/:id', (req, res, next) => {
     });
 
     if (!directory) {
-        const error = new Error('Could not find directory with this ID.');
-        error.code = 404;
-        throw error;    // passing to next function to handle error (in App.js)
+        throw HttpError('Could not find directory with this ID.');
     };
 
     res.json({ directory })
