@@ -52,8 +52,10 @@ router.get('/:id', (req, res, next) => {
     });
 
     if (!directory) {
-        return res.status(404).json({message: 'Did not find directory by this ID.'})
-    } 
+        const error = new Error('Could not find directory with this ID.');
+        error.code = 404;
+        throw error;    // passing to next function to handle error (in App.js)
+    };
 
     res.json({ directory })
 });
