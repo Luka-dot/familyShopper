@@ -83,7 +83,12 @@ const updateDirectoryById = (req, res, next) => {
     res.status(200).json({directory: updatedDirectory});
 };
 
-const deleteDirectory = (req, res, next) => {};
+const deleteDirectory = (req, res, next) => {
+    const directoryId = parseInt(req.params.id, 10);
+    DUMMY_DIRECTORY = DUMMY_DIRECTORY.filter(p => p.id !== directoryId);
+
+    res.status(200).json({message: 'Directory deleted'})
+};
 
 exports.getDirectoryById = getDirectoryById;
 exports.createDirectory = createDirectory;
