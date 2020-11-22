@@ -56,4 +56,19 @@ const getDirectoryById = (req, res, next) => {
     res.json({ directory })
 };
 
+const createDirectory = (req, res, next) => {
+    const { id, name, created, listDetail } = req.body;
+    const createdDirectory = {
+        id,
+        name,
+        created,
+        listDetail
+    };
+
+    DUMMY_DIRECTORY.push(createdDirectory);  //unshift(createdDirectory) for first place in list
+
+    res.status(201).json({directory: createdDirectory});
+};
+
 exports.getDirectoryById = getDirectoryById;
+exports.createDirectory = createDirectory;

@@ -5,6 +5,8 @@ const directoryRoutes = require('./routes/directory-list-routes');
 
 const app = express();
 
+app.use(bodyParser.json())
+
 app.use('/api/directory/', directoryRoutes);
 
 // this function will execute when any function before it trow error
