@@ -1,6 +1,6 @@
 const HttpError = require
 
-const DUMMY_DIRECTORY = [
+let DUMMY_DIRECTORY = [
     {
     id: 101,
     name: 'Groceries',
