@@ -70,5 +70,22 @@ const createDirectory = (req, res, next) => {
     res.status(201).json({directory: createdDirectory});
 };
 
+const updateDirectoryById = (req, res, next) => {
+    const { listDetail } = req.body;
+    const directoryId = parseInt(req.params.id, 10);
+
+    const updatedDirectory = { ...DUMMY_DIRECTORY.find(p => p.id === directoryId) };
+    const directoryIndex = DUMMY_DIRECTORY.findIndex(p => p.id === directoryId);
+    updatedDirectory.listDetail = listDetail;
+
+    DUMMY_DIRECTORY[directoryIndex] = updatedDirectory;
+
+    res.status(200).json({directory: updatedDirectory});
+};
+
+const deleteDirectory = (req, res, next) => {};
+
 exports.getDirectoryById = getDirectoryById;
 exports.createDirectory = createDirectory;
+exports.updateDirectoryById = updateDirectoryById;
+exports.deleteDirectory = deleteDirectory;
