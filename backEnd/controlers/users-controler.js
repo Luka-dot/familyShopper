@@ -16,6 +16,12 @@ const getUsers = (req, res, next) => {
 const signup = (req, res, next) => {
     const { id, name, email, password } = req.body;
 
+    const hasUser = DUMMY_USERS.find(u => u.email === email);
+
+    if (hasUser) {
+        throw new HttpError('This email is already registered.', 422);
+    }
+
     const createdUser = {
         id,
         name,
