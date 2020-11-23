@@ -85,17 +85,37 @@ const createDirectory = async (req, res, next) => {
     res.status(201).json({directory: createdDirectory});
 };
 
-const updateDirectoryById = (req, res, next) => {
+const updateDirectoryById = async (req, res, next) => {
     const { listDetail } = req.body;
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
 
-    const updatedDirectory = { ...DUMMY_DIRECTORY.find(p => p.id === directoryId) };
-    const directoryIndex = DUMMY_DIRECTORY.findIndex(p => p.id === directoryId);
-    updatedDirectory.listDetail = listDetail;
+    // const updatedDirectory = { ...DUMMY_DIRECTORY.find(p => p.id === directoryId) };
+    // const directoryIndex = DUMMY_DIRECTORY.findIndex(p => p.id === directoryId);
 
-    DUMMY_DIRECTORY[directoryIndex] = updatedDirectory;
+    let directory;
+    try {
+    directory = await Directory.findById(directoryId);
+    } catch (err) {
+        const error = new HttpError('Could not find directory with this ID.', 500); 
+        return next(error);
+    }
 
-    res.status(200).json({directory: updatedDirectory});
+    if (!directory) {
+        const error = new HttpError('Could not find directory with this ID.');
+        return next(error);
+    };
+
+    directory.listDetail = listDetail;
+
+//    DUMMY_DIRECTORY[directoryIndex] = updatedDirectory;
+    try {
+        await directory.save();
+    } catch (err) {
+        const error = new HttpError('Could not update directory with this ID.', 500); 
+        return next(error);
+    }
+
+    res.status(200).json({directory: directory.toObject({ getters: true}) });
 };
 
 const deleteDirectory = (req, res, next) => {
