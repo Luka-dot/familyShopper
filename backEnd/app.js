@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const directoryRoutes = require('./routes/directory-list-routes');
+const usersRoutes = require('./routes/users-routes');
 const HttpError = require('./models/http-error');
 
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 app.use(bodyParser.json())
 
 app.use('/api/directory/', directoryRoutes);
+app.use('/api/users', usersRoutes);
 
 // this middleware only runs after no route was found-matched
 app.use((req, res, next) => {
