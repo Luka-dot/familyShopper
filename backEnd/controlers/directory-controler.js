@@ -1,5 +1,7 @@
 const HttpError = require
 
+const Directory = require('../models/directory');
+
 let DUMMY_DIRECTORY = [
     {
     id: 101,
@@ -56,16 +58,23 @@ const getDirectoryById = (req, res, next) => {
     res.json({ directory })
 };
 
-const createDirectory = (req, res, next) => {
+const createDirectory = async (req, res, next) => {
     const { id, name, created, listDetail } = req.body;
-    const createdDirectory = {
-        id,
-        name,
-        created,
-        listDetail
-    };
+    const createdDirectory = new Directory({
+        id: id,
+        name: name,
+        created: created,
+        listDetail: listDetail
+    });
 
-    DUMMY_DIRECTORY.push(createdDirectory);  //unshift(createdDirectory) for first place in list
+//    DUMMY_DIRECTORY.push(createdDirectory);  //unshift(createdDirectory) for first place in list
+    try {
+        await createdDirectory.save();
+    } catch (err) {
+        const error = new HttpError('Create directory failed.', 500);
+        return next(error);
+    }
+    
 
     res.status(201).json({directory: createdDirectory});
 };
