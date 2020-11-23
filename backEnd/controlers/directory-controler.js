@@ -45,17 +45,23 @@ let DUMMY_DIRECTORY = [
     }
 ];
 
-const getDirectoryById = (req, res, next) => {
-    const directoryId = parseInt(req.params.id, 10);
-    const directory = DUMMY_DIRECTORY.find(p => {
-        return p.id === directoryId;
-    });
+const getDirectoryById = async (req, res, next) => {
+    const directoryId = req.params.id;   // parseInt(req.params.id, 10)
+
+    let directory;
+    try {
+    directory = await Directory.findById(directoryId);
+    } catch (err) {
+        const error = new HttpError('Could not find directory with this ID.', 500); 
+        return next(error);
+    }
 
     if (!directory) {
-        throw HttpError('Could not find directory with this ID.');
+        const error = new HttpError('Could not find directory with this ID.');
+        return next(error);
     };
 
-    res.json({ directory })
+    res.json({ directory: directory.toObject( {getters: true} ) }); //toObject is used to remove Mongoose methods, 
 };
 
 const createDirectory = async (req, res, next) => {
@@ -81,7 +87,7 @@ const createDirectory = async (req, res, next) => {
 
 const updateDirectoryById = (req, res, next) => {
     const { listDetail } = req.body;
-    const directoryId = parseInt(req.params.id, 10);
+    const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
 
     const updatedDirectory = { ...DUMMY_DIRECTORY.find(p => p.id === directoryId) };
     const directoryIndex = DUMMY_DIRECTORY.findIndex(p => p.id === directoryId);
