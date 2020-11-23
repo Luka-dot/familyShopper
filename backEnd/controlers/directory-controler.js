@@ -1,6 +1,6 @@
 const HttpError = require
 
-const { findAllByPlaceholderText } = require('@testing-library/react');
+// const { findAllByPlaceholderText } = require('@testing-library/react');
 const Directory = require('../models/directory');
 
 let DUMMY_DIRECTORY = [
