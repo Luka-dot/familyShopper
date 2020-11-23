@@ -4,7 +4,7 @@ import inialData from '../../data/base-date';
 
 const initialState = initialData;
 
-const mainListReducer = (state = inialData, action) => {
+const mainListReducer = (state = initialState, action) => {
     console.log(action.payload)
     
     switch(action.type) {

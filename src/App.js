@@ -12,12 +12,12 @@ import { auth } from './firebase/firebase.utils';
 import './App.scss';
 import { getMainList } from './redux/actions';
 
-function App() {
+function App(props) {
   const [currentUser, setCurrentUser] = useState(null);
 
-  // useEffect(() => {
-  //   getMainList()
-  // }, [])
+  useEffect(() => {
+    getMainList()
+  }, [])
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {

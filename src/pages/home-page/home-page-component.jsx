@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import DirectiryList from '../../components/directory/directory-componenet';
@@ -8,8 +8,29 @@ import './home-page.styles.scss';
 import closeIcon from '../../assets/delete-button.svg';
 
 const HomePage = (props) => {
+    const inputRef = useRef();
     const [addListStarted, setAddListStarted] = useState(false);
     const [name, setName] = useState('');
+
+
+    useEffect(
+        () => {
+          // This runs AFTER the first render,
+          // so the ref is set by now.
+          console.log("render");
+          // inputRef.current.focus();
+        },
+            // The effect "depends on" inputRef
+        [inputRef]
+      );
+
+
+    // useEffect(() => {
+    //     () => {
+        
+    //     handleConnect();
+    // }
+    // }, [inputRef])
 
     const handleNameChange = (e) => {
         const nameInput = e.target.value;
