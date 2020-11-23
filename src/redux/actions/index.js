@@ -1,9 +1,25 @@
+import axios from "axios";
 
-export const getMainList = () => {
-    return {
-        type: 'GET_LIST'
-    }
-};
+
+
+export const getMainList = () => async dispatch => {
+    console.log('fired action/index getMainList')
+    const request = await axios.get('http://localhost:5000/api/directory', {headers: {"Access-Control-Allow-Origin": "*"}});
+    console.log(request)
+    dispatch({ type: 'GET_LIST', payload: request.data.directories})
+  };
+
+
+
+// export const getMainList () => async dispatch {
+//     const request = axios.get('http://localhost:5000/api/directory');
+    
+
+//     return {
+//         type: 'GET_LIST',
+//         payload: request
+//     }
+// };
 
 export const deleteItem = (id, elIndex) => {
     return {

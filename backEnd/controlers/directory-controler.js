@@ -1,57 +1,15 @@
 const HttpError = require
 
-// const { findAllByPlaceholderText } = require('@testing-library/react');
 const Directory = require('../models/directory');
 
-let DUMMY_DIRECTORY = [
-    {
-    id: 101,
-    name: 'Groceries',
-    created: "11/10/2020",
-    listDetail: [{
-            id: 1,
-            text: "this is a first list item",
-            completed: false
-        },
-        {
-            id: 2,
-            text: "this is yet another list",
-            completed: false
-        },
-        {
-            id: 3,
-            text: "more and more and more this is last one",
-            completed: false
-        },]
-    },
-    {
-    id: 102,
-    name: 'Camping list',
-    created: "11/10/2020",
-    listDetail: [{
-            id: 21,
-            text: "2nd list this is a first list item",
-            completed: false
-        },
-        {
-            id: 22,
-            text: "2nd list this is yet another list",
-            completed: false
-        },
-        {
-            id: 23,
-            text: "2nd list more and more and more this is last one",
-            completed: false
-        }]
-    }
-];
 
+/**************************************************** GET ****************************************************/
 const getDirectoryById = async (req, res, next) => {
-    const directoryId = req.params.id;   // parseInt(req.params.id, 10)
+ //   const directoryId = req.params.id;   // parseInt(req.params.id, 10)
 
     let directory;
-    try {
-    directory = await Directory.findById(directoryId);
+    try {                       
+    directory = await Directory.find({});
     } catch (err) {
         const error = new HttpError('Could not find directory with this ID.', 500); 
         return next(error);
@@ -62,7 +20,8 @@ const getDirectoryById = async (req, res, next) => {
         return next(error);
     };
 
-    res.json({ directory: directory.toObject( {getters: true} ) }); //toObject is used to remove Mongoose methods, 
+    res.json({ directory: directory.map(dir => dir.toObject({getters: true}) ) }); //toObject is used to remove Mongoose methods, 
+ //   res.json({ users: users.map(user => user.toObject({ getters: true }))});
 };
 
 const createDirectory = async (req, res, next) => {
@@ -74,7 +33,6 @@ const createDirectory = async (req, res, next) => {
         listDetail: listDetail
     });
 
-//    DUMMY_DIRECTORY.push(createdDirectory);  //unshift(createdDirectory) for first place in list
     try {
         await createdDirectory.save();
     } catch (err) {
@@ -86,12 +44,10 @@ const createDirectory = async (req, res, next) => {
     res.status(201).json({directory: createdDirectory});
 };
 
+/**************************************************** UPDATE ****************************************************/
 const updateDirectoryById = async (req, res, next) => {
     const { listDetail } = req.body;
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
-
-    // const updatedDirectory = { ...DUMMY_DIRECTORY.find(p => p.id === directoryId) };
-    // const directoryIndex = DUMMY_DIRECTORY.findIndex(p => p.id === directoryId);
 
     let directory;
     try {
@@ -108,7 +64,6 @@ const updateDirectoryById = async (req, res, next) => {
 
     directory.listDetail = listDetail;
 
-//    DUMMY_DIRECTORY[directoryIndex] = updatedDirectory;
     try {
         await directory.save();
     } catch (err) {
@@ -119,9 +74,9 @@ const updateDirectoryById = async (req, res, next) => {
     res.status(200).json({directory: directory.toObject({ getters: true}) });
 };
 
+/**************************************************** DELETE ****************************************************/
 const deleteDirectory = async (req, res, next) => {
     const directoryId = req.params.id;
-//    DUMMY_DIRECTORY = DUMMY_DIRECTORY.filter(p => p.id !== directoryId);
 
     let directory;
     try {

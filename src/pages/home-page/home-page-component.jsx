@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import DirectiryList from '../../components/directory/directory-componenet';
-import { addNewDirectoryList } from '../../redux/actions';
+import { addNewDirectoryList, getMainList } from '../../redux/actions';
 
 import './home-page.styles.scss';
 import closeIcon from '../../assets/delete-button.svg';
@@ -15,6 +15,11 @@ const HomePage = (props) => {
         const nameInput = e.target.value;
         setName(nameInput);
     };
+
+    const handleConnect = () => {
+        console.log('Connecting .......');
+        props.getMainList();
+    }
 
     const handleAddDirectory = () => {
         console.log('clicked added handleAddDirectory', name)
@@ -35,6 +40,7 @@ const HomePage = (props) => {
                     <DirectiryList />
                 </div>
                 <button className="addListButton" onClick={() => setAddListStarted(true)} >ADD new list</button>
+                <button className="enterNewDir" onClick={() => handleConnect()}>Refresh</button>
             </div>
             ):(
             <div className='home-wrapper' >
@@ -45,7 +51,7 @@ const HomePage = (props) => {
                         <input type="text" placeholder="Name of the new List" onChange={(e) => handleNameChange(e) } />
                     </form>
                     <button className="enterNewDir" type="submit" onClick={handleAddDirectory}>ADD new list</button>
-                
+                    
             </div>
             )
             }
@@ -54,7 +60,8 @@ const HomePage = (props) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    addNewDirectoryList: (name) => dispatch(addNewDirectoryList(name))
+    addNewDirectoryList: (name) => dispatch(addNewDirectoryList(name)),
+    getMainList: () => dispatch(getMainList())
 });
 
 export default connect(null, mapDispatchToProps)(HomePage);

@@ -4,7 +4,7 @@ const router = express.Router('../models/http-error');
 
 const directoryControllers = require('../controlers/directory-controler');
 
-router.get('/:id', directoryControllers.getDirectoryById);
+router.get('/', directoryControllers.getDirectoryById);
 
 router.post('/', directoryControllers.createDirectory);
 

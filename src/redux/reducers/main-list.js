@@ -1,11 +1,16 @@
+import _ from "lodash";
+import initialData from '../../data/base-date';
 import inialData from '../../data/base-date';
 
-const initialState = inialData;
+const initialState = initialData;
 
-const mainListReducer = (state = initialState, action) => {
+const mainListReducer = (state = inialData, action) => {
+    console.log(action.payload)
+    console.log(state)
     switch(action.type) {
         case "GET_LIST":
-            return state;
+            
+            return _.mapKeys(action.payload.data, "id");
 
         case "DELETE_ITEM":
             const pIndex = action.payload.elIndex;
