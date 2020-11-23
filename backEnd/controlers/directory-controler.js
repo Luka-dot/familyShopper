@@ -1,5 +1,6 @@
 const HttpError = require
 
+const { findAllByPlaceholderText } = require('@testing-library/react');
 const Directory = require('../models/directory');
 
 let DUMMY_DIRECTORY = [
@@ -118,9 +119,24 @@ const updateDirectoryById = async (req, res, next) => {
     res.status(200).json({directory: directory.toObject({ getters: true}) });
 };
 
-const deleteDirectory = (req, res, next) => {
-    const directoryId = parseInt(req.params.id, 10);
-    DUMMY_DIRECTORY = DUMMY_DIRECTORY.filter(p => p.id !== directoryId);
+const deleteDirectory = async (req, res, next) => {
+    const directoryId = req.params.id;
+//    DUMMY_DIRECTORY = DUMMY_DIRECTORY.filter(p => p.id !== directoryId);
+
+    let directory;
+    try {
+        directory = await Directory.findById(directoryId); 
+    } catch (err) {
+        const error = new HttpError('Could not delete directory with this ID.', 500); 
+        return next(error);
+    }
+
+    try {
+        await directory.remove();
+    } catch (err) {
+        const error = new HttpError('Could not delete directory with this ID.', 500); 
+        return next(error);
+    }
 
     res.status(200).json({message: 'Directory deleted'})
 };
