@@ -4,9 +4,9 @@ import axios from "axios";
 
 export const getMainList = () => async dispatch => {
     console.log('fired action/index getMainList')
-    const request = await axios.get('http://localhost:5000/api/directory', {headers: {"Access-Control-Allow-Origin": "*"}});
-    console.log(request)
-    dispatch({ type: 'GET_LIST', payload: request.data.directories})
+    const request = await axios.get('http://localhost:5000/api/directory');
+    console.log('request ',request.data.directory)
+    dispatch({ type: 'GET_LIST', payload: request.data.directory})
   };
 
 

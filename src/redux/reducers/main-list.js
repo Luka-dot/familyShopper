@@ -6,11 +6,11 @@ const initialState = initialData;
 
 const mainListReducer = (state = inialData, action) => {
     console.log(action.payload)
-    console.log(state)
+    
     switch(action.type) {
         case "GET_LIST":
             
-            return _.mapKeys(action.payload.data, "id");
+            return action.payload;
 
         case "DELETE_ITEM":
             const pIndex = action.payload.elIndex;
