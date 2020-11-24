@@ -1,15 +1,10 @@
 import _ from "lodash";
-import initialData from '../../data/base-date';
-import inialData from '../../data/base-date';
 
-const initialState = initialData;
-
-const mainListReducer = (state = initialState, action) => {
+const mainListReducer = (state = [], action) => {
     console.log(action.payload)
     
     switch(action.type) {
-        case "GET_LIST":
-            
+        case "GET_LIST":         
             return action.payload;
 
         case "DELETE_ITEM":

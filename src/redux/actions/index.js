@@ -1,25 +1,11 @@
 import axios from "axios";
 
-
-
 export const getMainList = () => async dispatch => {
     console.log('fired action/index getMainList')
     const request = await axios.get('http://localhost:5000/api/directory');
     console.log('request ',request.data.directory)
     dispatch({ type: 'GET_LIST', payload: request.data.directory})
   };
-
-
-
-// export const getMainList () => async dispatch {
-//     const request = axios.get('http://localhost:5000/api/directory');
-    
-
-//     return {
-//         type: 'GET_LIST',
-//         payload: request
-//     }
-// };
 
 export const deleteItem = (id, elIndex) => {
     return {

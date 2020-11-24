@@ -16,7 +16,8 @@ function App(props) {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    getMainList()
+    console.log('Use EFFECT in app ')
+    props.getMainList()
   }, [])
 
   useEffect(() => {
@@ -41,7 +42,7 @@ function App(props) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getMainList: dispatch(getMainList)
+  getMainList: () => dispatch(getMainList())
 });
 
 export default connect(null, mapDispatchToProps)(App);
