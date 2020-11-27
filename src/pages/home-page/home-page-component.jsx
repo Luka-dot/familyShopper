@@ -11,28 +11,6 @@ const HomePage = (props) => {
     const [addListStarted, setAddListStarted] = useState(false);
     const [name, setName] = useState('');
 
-    // useEffect(
-    //     () => {
-    //       // This runs AFTER the first render,
-    //       // so the ref is set by now.
-    //       console.log("render");
-    //       // inputRef.current.focus();
-    //     },
-    //         // The effect "depends on" inputRef
-    //     [inputRef]
-    //   );
-
-
-    // useEffect(() => {
-    //     if (loaded === 1) {
-    //     console.log('useEffect fired');
-    //     props.getMainList();
-    //     setLoaded(2)
-    //     } else {
-    //         return
-    //     }
-    // },)
-
     const handleNameChange = (e) => {
         const nameInput = e.target.value;
         setName(nameInput);

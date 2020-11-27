@@ -50,8 +50,8 @@ export const addNewDirectoryList = (name) => {
 };
 
 export const deleteDirectoryList = (directoryListId) => {
-    return{
-        type: 'DELTE_DIRECTORY_LIST',
-        payload: directoryListId
-    }
+    console.log('fired action/index DELETE ', directoryListId)
+    const request = axios.delete(`http://localhost:5000/api/directory/${directoryListId}`);
+    console.log('request for DELET ',request.data)
+    return ({ type: 'DELTE_DIRECTORY_LIST', payload: directoryListId})
 };
