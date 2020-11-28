@@ -45,7 +45,7 @@ const createDirectory = async (req, res, next) => {
 
 /**************************************************** UPDATE ****************************************************/
 const updateDirectoryById = async (req, res, next) => {
-    const { listDetail } = req.body;
+    const { newList } = req.body;
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
 
     console.log('back end ',req.body, directoryId)
@@ -63,7 +63,7 @@ const updateDirectoryById = async (req, res, next) => {
         return next(error);
     };
     console.log('directory.listDetail ', directory.listDetail)
-    directory.listDetail = push(listDetail);
+    directory.listDetail.push(req.body);
 
     try {
         await directory.save();
