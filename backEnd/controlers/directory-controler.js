@@ -48,7 +48,7 @@ const updateDirectoryById = async (req, res, next) => {
     const { listDetail } = req.body;
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
 
-    console.log('back end ',req.body)
+    console.log('back end ',req.body, directoryId)
 
     let directory;
     try {
@@ -62,8 +62,8 @@ const updateDirectoryById = async (req, res, next) => {
         const error = new HttpError('Could not find directory with this ID.');
         return next(error);
     };
-
-    directory.listDetail = listDetail;
+    console.log('directory.listDetail ', directory.listDetail)
+    directory.listDetail = push(listDetail);
 
     try {
         await directory.save();
