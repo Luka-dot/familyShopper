@@ -8,14 +8,14 @@ import {addItem, deleteItem, toggleCompleted} from '../../redux/actions/index';
 import './main-list.styles.scss';
 
 const MainList = (props) => {
-    const displayListId = props.location.selectedItemId;
-    const elementsIndex = props.mainList.findIndex(element => element.id === displayListId )
     const elementId = props.match.params.id
-    console.log('element index ', props.match.params.id)
+    const elementsIndex = props.mainList.findIndex(element => element._id === elementId )
+    
+    console.log('element index ', props.match.params.id, elementsIndex);
+    console.log(props.mainList[elementsIndex].listDetail)
 
     const dispatch = useDispatch();
     const [entry, setEntry] = useState('');
-    const parentId = props.elementId;
 
     const hadleChange = (e) => {
         const textInput = e.target.value;
@@ -25,7 +25,7 @@ const MainList = (props) => {
     const handleEnter = () => {
         console.log('submitting'. elementId)
         if (entry.length > 0) {
-            dispatch(addItem(entry, elementId));
+            props.addItem(entry, elementId);
         setEntry('')
         } else {
             alert('must not be empty')
@@ -35,7 +35,7 @@ const MainList = (props) => {
     const handleKeyEnter = (e) => {
         e.preventDefault()
         if (entry.length > 0) {
-            dispatch(addItem(entry, elementId));
+            props.addItem(entry, elementId);
         setEntry('')
         } else {
             alert('must not be empty')

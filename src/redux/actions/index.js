@@ -14,17 +14,23 @@ export const deleteItem = (id, elIndex) => {
     }
 };
 
-export const addItem = (newItem, parentId) => async dispatch => {
+export const addItem = (newItem, parentId) => {
     console.log('add item action ', newItem, parentId)
-    const toBeAdded = {
-        "listDetail": [{
-            "id": Math.random(),
-            "text": newItem,
-            "completed": "False"
-        }]
+    return {
+        type: 'ADD_ITEM',
+        payload: {newItem, parentId}
     }
-    const request = await axios.patch(`http://localhost:5000/api/directory/${parentId}`, toBeAdded)
-    dispatch({ type: 'ADD_ITEM', payload: request.data })
+
+
+    // const toBeAdded = {
+    //     "listDetail": [{
+    //         "id": Math.random(),
+    //         "text": newItem,
+    //         "completed": "False"
+    //     }]
+    // }
+    // const request = await axios.patch(`http://localhost:5000/api/directory/${parentId}`, toBeAdded)
+    // dispatch({ type: 'ADD_ITEM', payload: request.data })
 
 
     // axios.patch(`http://localhost:5000/api/directory/${parentId}`, newItem).then(function (response) {
