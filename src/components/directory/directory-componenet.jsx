@@ -8,6 +8,7 @@
     import deleteIcon from '../../assets/delete.svg';
 
     const DirectoryList = (props) => {
+        console.log('directory list', props.mainList)
 
     const handleDeleteDirList = (directoryListId) => {
         console.log('del dir list ', directoryListId)
@@ -22,10 +23,11 @@
                         <div className="delete-container">
                             <img className="delete-icon" src={deleteIcon} onClick={() => handleDeleteDirList(props.id)} />
                         </div>
-                        <Link to={{pathname:"/mainList/:id", selectedItemId: props.id }} style={{ color: 'inherit', textDecoration: 'inherit'}} >
+                        <Link to={{pathname:`/mainList/${props._id}`, selectedItemId: props.id, dirId: props._id }} style={{ color: 'inherit', textDecoration: 'inherit'}} >
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>
                             <p>{props.listDetail.length} items on this list.</p>
+                            <p>{props._id}</p>
                         </Link>
                     </div>
                 ))

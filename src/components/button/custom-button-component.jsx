@@ -7,7 +7,8 @@ import './custom-button.styles.scss';
 const CustomButton = (props) => {
     const dispatch = useDispatch();
     const [entry, setEntry] = useState('');
-    const parentId = props.elementsIndex
+    const parentId = props.elementId;
+    console.log('custom button ', props)
     
     const hadleChange = (e) => {
         const textInput = e.target.value;
@@ -15,7 +16,7 @@ const CustomButton = (props) => {
     }
 
     const handleEnter = () => {
-        console.log('submitting')
+        console.log('submitting'. parentId)
         if (entry.length > 0) {
             dispatch(addItem(entry, parentId));
         setEntry('')

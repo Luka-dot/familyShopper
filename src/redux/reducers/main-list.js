@@ -18,13 +18,13 @@ const mainListReducer = (state = [], action) => {
             ];
 
         case "ADD_ITEM":
-            let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
-            const addItem = [...state];
-            addItem[action.payload.parentId].listDetail.push(newItem);
-       
-            return [
-                ...addItem
-            ];
+            // let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
+            // const addItem = [...state];
+            // addItem[action.payload.parentId].listDetail.push(newItem);
+            console.log(action.payload)
+
+
+            return  [...state, action.payload ];
 
         case "TOGGLE_COMPLETED":   
             const parentIndex = action.payload.elIndex;

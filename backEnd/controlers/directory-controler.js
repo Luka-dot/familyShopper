@@ -25,14 +25,13 @@ const getDirectoryById = async (req, res, next) => {
 };
 
 const createDirectory = async (req, res, next) => {
-    const { id, name, created, listDetail } = req.body;
+    const { name, created, listDetail } = req.body;
     const createdDirectory = new Directory({
-        id: id,
         name: name,
         created: created,
         listDetail: listDetail
     });
-
+    
     try {
         await createdDirectory.save();
     } catch (err) {
@@ -41,13 +40,15 @@ const createDirectory = async (req, res, next) => {
     }
     
 
-    res.status(201).json({directory: createdDirectory});
+    res.status(201).json({directory: createdDirectory });
 };
 
 /**************************************************** UPDATE ****************************************************/
 const updateDirectoryById = async (req, res, next) => {
     const { listDetail } = req.body;
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
+
+    console.log('back end ',req.body)
 
     let directory;
     try {
