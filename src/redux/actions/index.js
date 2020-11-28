@@ -14,12 +14,22 @@ export const deleteItem = (id, elIndex) => {
     }
 };
 
-export const addItem = (newItem, parentId, elementsIndex) => {
-    console.log('add item action ', newItem, parentId, elementsIndex)
-    return {
-        type: 'ADD_ITEM',
-        payload: {newItem, parentId, elementsIndex}
+export const addItem = (newItem, parentId, elementsIndex) => async dispatch => {
+    // console.log('add item action ', newItem, parentId, elementsIndex)
+    // return {
+    //     type: 'ADD_ITEM',
+    //     payload: {newItem, parentId, elementsIndex}
+    // }
+
+    const toBeAdded = {
+            "id": Math.random(),
+            "text": newItem,
+            "completed": "False",
+            "elementsIndex": elementsIndex
     }
+
+    const request = await axios.patch(`http://localhost:5000/api/directory/${parentId}`, toBeAdded)
+    dispatch({ type: 'ADD_ITEM', payload: request.data })
 
 
     // const toBeAdded = {

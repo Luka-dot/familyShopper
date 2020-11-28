@@ -45,11 +45,9 @@ const createDirectory = async (req, res, next) => {
 
 /**************************************************** UPDATE ****************************************************/
 const updateDirectoryById = async (req, res, next) => {
-    const { newList } = req.body;
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
-
-    console.log('back end ',req.body, directoryId)
-
+    console.log(req.body)
+    
     let directory;
     try {
     directory = await Directory.findById(directoryId);
@@ -62,7 +60,7 @@ const updateDirectoryById = async (req, res, next) => {
         const error = new HttpError('Could not find directory with this ID.');
         return next(error);
     };
-    console.log('directory.listDetail ', directory.listDetail)
+    
     directory.listDetail.push(req.body);
 
     try {

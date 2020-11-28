@@ -7,7 +7,8 @@ const directorySchema = new Schema({
     id: Number,
     name: String,
     created: String,
-    listDetail: Array
+    listDetail: Array,
+    elementIndex: Number
 });
 
 module.exports = mongoose.model('Directory', directorySchema);

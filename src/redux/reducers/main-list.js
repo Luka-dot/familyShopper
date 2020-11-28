@@ -8,28 +8,23 @@ const mainListReducer = (state = [], action) => {
             return action.payload;
 
         case "DELETE_ITEM":
-            const pIndex = action.payload.elIndex;
+            const pIndex = action.payload;
             const xList = state[pIndex].listDetail.filter((item) => { return item.id !== action.payload.id});
             let deleteList = [ ...state ];
             const ttt = (deleteList[pIndex].listDetail = xList)
-                
+                console.log('MAIN list Action Payload ', pIndex)
             return [
                 ...state  
             ];
 
         case "ADD_ITEM":
-            // let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
-            // const addItem = [...state];
-            // addItem[action.payload.parentId].listDetail.push(newItem);
-            console.log('ADD_ITEM REDUCER ', action.payload);
-            console.log('ADD_ITEM REDUCER ', action.payload.elementsIndex);
+            // console.log('ADD_ITEM REDUCER ', action.payload);
+            // console.log('ADD_ITEM REDUCER ', action.payload.directory.listDetail);
 
             let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
-            // const addItem = [...state];
-            // addItem[action.payload.parentId].listDetail.push(newItem);
        
             const addItem = [...state];
-            addItem[action.payload.elementsIndex].listDetail.push(newItem);
+            addItem[0].listDetail.push(newItem);
        
             return [
                 ...addItem
