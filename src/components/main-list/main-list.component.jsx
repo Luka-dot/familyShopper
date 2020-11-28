@@ -23,9 +23,9 @@ const MainList = (props) => {
     }
 
     const handleEnter = () => {
-        console.log('submitting'. elementId)
+        console.log('submitting'. elementId, elementsIndex)
         if (entry.length > 0) {
-            props.addItem(entry, elementId);
+            props.addItem(entry, elementId, elementsIndex);
         setEntry('')
         } else {
             alert('must not be empty')
@@ -35,7 +35,7 @@ const MainList = (props) => {
     const handleKeyEnter = (e) => {
         e.preventDefault()
         if (entry.length > 0) {
-            props.addItem(entry, elementId);
+            props.addItem(entry, elementId, elementsIndex);
         setEntry('')
         } else {
             alert('must not be empty')
@@ -91,7 +91,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     toggleCompleted: (id, elIndex) => dispatch(toggleCompleted(id, elIndex)),
     deleteItem: (id, elIndex) => dispatch(deleteItem(id, elIndex)),
-    addItem: (newItem, parentId) => dispatch(addItem(newItem, parentId))
+    addItem: (newItem, parentId, elementsIndex) => dispatch(addItem(newItem, parentId, elementsIndex))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainList);

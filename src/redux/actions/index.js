@@ -14,11 +14,11 @@ export const deleteItem = (id, elIndex) => {
     }
 };
 
-export const addItem = (newItem, parentId) => {
-    console.log('add item action ', newItem, parentId)
+export const addItem = (newItem, parentId, elementsIndex) => {
+    console.log('add item action ', newItem, parentId, elementsIndex)
     return {
         type: 'ADD_ITEM',
-        payload: {newItem, parentId}
+        payload: {newItem, parentId, elementsIndex}
     }
 
 

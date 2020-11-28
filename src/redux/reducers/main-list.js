@@ -21,15 +21,18 @@ const mainListReducer = (state = [], action) => {
             // let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
             // const addItem = [...state];
             // addItem[action.payload.parentId].listDetail.push(newItem);
-            console.log('ADD_ITEM REDUCER ', action.payload)
+            console.log('ADD_ITEM REDUCER ', action.payload);
+            console.log('ADD_ITEM REDUCER ', action.payload.elementsIndex);
 
             let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
             // const addItem = [...state];
             // addItem[action.payload.parentId].listDetail.push(newItem);
        
+            const addItem = [...state];
+            addItem[action.payload.elementsIndex].listDetail.push(newItem);
+       
             return [
-                ...state,
-                newItem
+                ...addItem
             ];
 
         case "TOGGLE_COMPLETED":   

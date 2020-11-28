@@ -27,7 +27,6 @@
                             <h2>{props.name}</h2>
                             <p>Created : {props.created}</p>
                             <p>{props.listDetail.length} items on this list.</p>
-                            <p>{props._id}</p>
                         </Link>
                     </div>
                 ))
