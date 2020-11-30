@@ -7,10 +7,11 @@ export const getMainList = () => async dispatch => {
     dispatch({ type: 'GET_LIST', payload: request.data.directory})
   };
 
-export const deleteItem = (id, elIndex) => {
+export const deleteItem = (id, elIndex, directoryId) => {
+    console.log(elIndex, id, directoryId)
     return {
         type: 'DELETE_ITEM',
-        payload: {id, elIndex}
+        payload: {id, elIndex, directoryId}
     }
 };
 

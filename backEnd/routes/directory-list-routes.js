@@ -13,4 +13,6 @@ router.patch('/:id', directoryControllers.updateDirectoryById);
 
 router.delete('/:id', directoryControllers.deleteDirectory);
 
+router.delete('./:id/', directoryControllers.deleteItemById),
+
 module.exports = router;

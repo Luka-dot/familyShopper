@@ -46,7 +46,7 @@ const createDirectory = async (req, res, next) => {
 /**************************************************** UPDATE ****************************************************/
 const updateDirectoryById = async (req, res, next) => {
     const directoryId = req.params.id;  // = parseInt(req.params.id, 10);
-    console.log(req.body)
+    console.log('update directory ',req.body)
     
     let directory;
     try {
@@ -73,7 +73,38 @@ const updateDirectoryById = async (req, res, next) => {
     res.status(200).json({directory: directory.toObject({ getters: true}) });
 };
 
-/**************************************************** DELETE ****************************************************/
+/**************************************************** DELETE ITEM ****************************************************/
+const deleteItemById = async (req, res, next) => {
+    const itemId = req.params.id;
+    const directoryId = req.params.directoryId;
+
+    let directory;
+    try {
+    directory = await Directory.findById(directoryId);
+    } catch (err) {
+        const error = new HttpError('Could not find directory with this ID.', 500); 
+        return next(error);
+    }
+
+    if (!directory) {
+        const error = new HttpError('Could not find directory with this ID.');
+        return next(error);
+    };
+    
+    const testFind = directory.listDetail.findById(itemId);
+    console.log(testFind)
+
+    try {
+        await directory.save();
+    } catch (err) {
+        const error = new HttpError('Could not update directory with this ID.', 500); 
+        return next(error);
+    }
+
+    res.status(200).json({directory: directory.toObject({ getters: true}) });
+};
+
+/**************************************************** DELETE ITEM ****************************************************/
 const deleteDirectory = async (req, res, next) => {
     const directoryId = req.params.id;
 
@@ -98,4 +129,5 @@ const deleteDirectory = async (req, res, next) => {
 exports.getDirectoryById = getDirectoryById;
 exports.createDirectory = createDirectory;
 exports.updateDirectoryById = updateDirectoryById;
+exports.deleteItemById = deleteItemById;
 exports.deleteDirectory = deleteDirectory;

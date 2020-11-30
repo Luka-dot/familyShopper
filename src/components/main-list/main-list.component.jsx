@@ -48,8 +48,8 @@ const MainList = (props) => {
         props.toggleCompleted(id, elIndex);
     };
 
-    const handleDelete = (id, elIndex) => {
-        props.deleteItem(id, elIndex);
+    const handleDelete = (id, elIndex, directoryId) => {
+        props.deleteItem(id, elIndex, directoryId);
     };
 
     return (  
@@ -64,7 +64,7 @@ const MainList = (props) => {
                             elementsIndex={elementsIndex} 
                             toggleCompleted={handleToggle} 
                             deleteItem={handleDelete} 
-                            directoryId={props._id} 
+                            directoryId={elementId} 
                         />
                     ))
                 }
@@ -90,7 +90,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     toggleCompleted: (id, elIndex) => dispatch(toggleCompleted(id, elIndex)),
-    deleteItem: (id, elIndex) => dispatch(deleteItem(id, elIndex)),
+    deleteItem: (id, elIndex, directoryId) => dispatch(deleteItem(id, elIndex, directoryId)),
     addItem: (newItem, parentId, elementsIndex) => dispatch(addItem(newItem, parentId, elementsIndex))
 });
 

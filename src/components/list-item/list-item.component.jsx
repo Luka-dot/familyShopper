@@ -4,6 +4,7 @@ import deleteIcon from '../../assets/delete.svg';
 import './list-item.styles.scss';
 
 const ListItem = (props) => {
+    console.log(props)
     return (
         <div className="item" >
             <div className='text-item-container' onClick={() => props.toggleCompleted(props.id, props.elementsIndex)}>
@@ -12,7 +13,7 @@ const ListItem = (props) => {
                 <p className="item-text-completed">{props.text}</p>
             }
             </div>           
-            <img className="delete-button" src={deleteIcon} onClick={() => props.deleteItem(props.id, props.elementsIndex)}></img>
+            <img className="delete-button" src={deleteIcon} onClick={() => props.deleteItem(props.id, props.elementsIndex, props.directoryId)}></img>
         </div>
     )
 };
