@@ -85,18 +85,14 @@ const deleteItemById = async (req, res, next) => {
         const error = new HttpError('Could not find directory with this ID.', 500); 
         return next(error);
     }
-    console.log(directory.listDetail)
 
     if (!directory) {
         const error = new HttpError('Could not find directory with this ID.');
         return next(error);
     };
     
-    let testFind;
-    
-    testFind = directory.listDetail.filter((item) => item.id !== itemId);
-    
-    console.log('testFind var ', testFind)
+    const itemToDeleteFilterOut = directory.listDetail.filter((item) => item.id != itemId);
+    directory.listDetail = itemToDeleteFilterOut
 
     try {
         await directory.save();
