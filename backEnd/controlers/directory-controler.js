@@ -102,6 +102,7 @@ const deleteItemById = async (req, res, next) => {
     }
 
     res.status(200).json({directory: directory.toObject({ getters: true}) });
+//    res.json({ directory: directory.map(dir => dir.toObject({getters: true}) ) })
 };
 
 /**************************************************** DELETE ITEM ****************************************************/

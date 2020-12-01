@@ -11,12 +11,6 @@ export const deleteItem = (id, elIndex, directoryId) => async dispatch => {
     
     const request = await axios.delete(`http://localhost:5000/api/directory/${directoryId}/listItem/${id}`)
     dispatch({ type: 'DELETE_ITEM', payload: request.data })
-    
-    
-    // return {
-    //     type: 'DELETE_ITEM',
-    //     payload: {id, elIndex, directoryId}
-    // }
 };
 
 export const addItem = (newItem, parentId, elementsIndex) => async dispatch => {

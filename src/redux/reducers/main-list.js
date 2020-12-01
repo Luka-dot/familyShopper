@@ -10,6 +10,9 @@ const mainListReducer = (state = [], action) => {
         case "DELETE_ITEM":
             console.log(action.payload)
         
+            return [
+                action.payload 
+            ];
         
             // const pIndex = action.payload.elIndex;
             // console.log(action.payload)
@@ -17,9 +20,7 @@ const mainListReducer = (state = [], action) => {
             // let deleteList = [ ...state ];
             // const ttt = (deleteList[pIndex].listDetail = xList)
             //     console.log('MAIN list Action Payload ', pIndex)
-            return [
-                action.payload 
-            ];
+            
 
         case "ADD_ITEM":
             let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
