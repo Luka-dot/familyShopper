@@ -42,7 +42,6 @@ const MainList = (props) => {
         }
     }
 
-
     const handleToggle = (id, elIndex) => {
         console.log("inside handleToggle ", id, elementsIndex)
         props.toggleCompleted(id, elIndex);

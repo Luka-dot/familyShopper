@@ -77,7 +77,7 @@ const updateDirectoryById = async (req, res, next) => {
 const deleteItemById = async (req, res, next) => {
     const itemId = req.params.id;
     const directoryId = req.params.directoryId;
-
+    
     let directory;
     try {
     directory = await Directory.findById(directoryId);
@@ -85,14 +85,18 @@ const deleteItemById = async (req, res, next) => {
         const error = new HttpError('Could not find directory with this ID.', 500); 
         return next(error);
     }
+    console.log(directory.listDetail)
 
     if (!directory) {
         const error = new HttpError('Could not find directory with this ID.');
         return next(error);
     };
     
-    const testFind = directory.listDetail.findById(itemId);
-    console.log(testFind)
+    let testFind;
+    
+    testFind = directory.listDetail.filter((item) => item.id !== itemId);
+    
+    console.log('testFind var ', testFind)
 
     try {
         await directory.save();
@@ -107,7 +111,7 @@ const deleteItemById = async (req, res, next) => {
 /**************************************************** DELETE ITEM ****************************************************/
 const deleteDirectory = async (req, res, next) => {
     const directoryId = req.params.id;
-
+    
     let directory;
     try {
         directory = await Directory.findById(directoryId); 
