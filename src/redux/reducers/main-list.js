@@ -17,14 +17,11 @@ const mainListReducer = (state = [], action) => {
             // let deleteList = [ ...state ];
             // const ttt = (deleteList[pIndex].listDetail = xList)
             //     console.log('MAIN list Action Payload ', pIndex)
-            // return [
-            //     ...state  
-            // ];
+            return [
+                action.payload 
+            ];
 
         case "ADD_ITEM":
-            // console.log('ADD_ITEM REDUCER ', action.payload);
-            // console.log('ADD_ITEM REDUCER ', action.payload.directory.listDetail);
-
             let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
        
             const addItem = [...state];

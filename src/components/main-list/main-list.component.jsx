@@ -11,8 +11,8 @@ const MainList = (props) => {
     const elementId = props.match.params.id
     const elementsIndex = props.mainList.findIndex(element => element._id === elementId )
     
-    console.log('element index ', props.match.params.id, elementsIndex);
-    console.log(props.mainList[elementsIndex].listDetail)
+    // console.log('element index ', props.match.params.id, elementsIndex);
+    // console.log(props.mainList[elementsIndex].listDetail)
 
     const dispatch = useDispatch();
     const [entry, setEntry] = useState('');

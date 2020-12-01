@@ -7,12 +7,16 @@ export const getMainList = () => async dispatch => {
     dispatch({ type: 'GET_LIST', payload: request.data.directory})
   };
 
-export const deleteItem = (id, elIndex, directoryId) => {
-    console.log(elIndex, id, directoryId)
-    return {
-        type: 'DELETE_ITEM',
-        payload: {id, elIndex, directoryId}
-    }
+export const deleteItem = (id, elIndex, directoryId) => async dispatch => {
+    
+    const request = await axios.delete(`http://localhost:5000/api/directory/${directoryId}/listItem/${id}`)
+    dispatch({ type: 'DELETE_ITEM', payload: request.data })
+    
+    
+    // return {
+    //     type: 'DELETE_ITEM',
+    //     payload: {id, elIndex, directoryId}
+    // }
 };
 
 export const addItem = (newItem, parentId, elementsIndex) => async dispatch => {
@@ -25,7 +29,6 @@ export const addItem = (newItem, parentId, elementsIndex) => async dispatch => {
 
     const request = await axios.patch(`http://localhost:5000/api/directory/${parentId}`, toBeAdded)
     dispatch({ type: 'ADD_ITEM', payload: request.data })
-
 };
 
 export const toggleCompleted = (id, elIndex) => {
