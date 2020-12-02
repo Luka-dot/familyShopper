@@ -13,14 +13,6 @@ const mainListReducer = (state = [], action) => {
             return [
                 action.payload 
             ];
-        
-            // const pIndex = action.payload.elIndex;
-            // console.log(action.payload)
-            // const xList = state[pIndex].listDetail.filter((item) => { return item.id !== action.payload.id});
-            // let deleteList = [ ...state ];
-            // const ttt = (deleteList[pIndex].listDetail = xList)
-            //     console.log('MAIN list Action Payload ', pIndex)
-            
 
         case "ADD_ITEM":
             let newItem = { id: (Math.random()), text: action.payload.newItem, completed: false}
